@@ -1,0 +1,26 @@
+.calendar-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+}
+.nav-button {
+    color: #ffffff;
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background-color: #45a049;
+    color: white;
+}
