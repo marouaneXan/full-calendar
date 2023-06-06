@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { FullCalendarService } from '../services/full-calendar.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -17,12 +18,17 @@ export class FullCalendarComponent implements OnInit {
     this.getEvents()
   }
 
-  calendarOptions: CalendarOptions = {
+  calendarOptions: any = {
     plugins: [dayGridPlugin],
     initialView: 'dayGridMonth',
     weekends: false,
-    events: []
+    events: [],
+    eventClick: this.handleEventClick.bind(this),
   };
+  eventForm = new FormGroup({
+    title: new FormControl<string | null>(null, [Validators.required]),
+    start: new FormControl<Date | null>(null, [Validators.required])
+  })
 
   getEvents() {
     this.fullCalendarService.getEvents().subscribe(
@@ -52,6 +58,23 @@ export class FullCalendarComponent implements OnInit {
         console.error('Error fetching events:', error);
       }
     );
+  }
+
+  handleEventClick(clickInfo: any) {
+    console.log(clickInfo.event._def);
+  }
+
+  addEvent(eventForm: FormGroup) {
+    this.fullCalendarService.addEvent(eventForm.value).subscribe(
+      () => {
+        alert('Event added successfully :)')
+        this.eventForm.reset()
+        this.getEvents()
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
 

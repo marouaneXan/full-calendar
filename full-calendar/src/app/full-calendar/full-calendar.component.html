@@ -1,6 +1,11 @@
+<form [formGroup]="eventForm">
+  <input type="text" formControlName="title">
+  <input type="date" formControlName="start">
+  <button (click)="addEvent(eventForm)">Add event</button>
+</form>
 <full-calendar [options]="calendarOptions">
-    <ng-template #eventContent let-arg>
-      <b>{{arg.timeText}}</b>
-      <i>{{arg.event.title}}</i>
-    </ng-template>
-  </full-calendar>
+  <ng-template #eventContent let-arg>
+    <b>{{arg.timeText}}</b>
+    <i>{{arg.event.title}}</i>
+  </ng-template>
+</full-calendar>

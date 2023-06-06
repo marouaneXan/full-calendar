@@ -5,9 +5,9 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,9 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     FullCalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
